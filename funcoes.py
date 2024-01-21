@@ -1,42 +1,31 @@
 def posiciona_frota(lista_frota):
+    #crio um tabuleiro 10 x 10
+    grid = [[0] * 10] * 10
+    tabuleiro = grid
     # acessando cada avião
     for frota in lista_frota:
         #acessando, no avião, a sua posição
         lista_posicao = frota['posicoes']
-        #criando um tabuleiro composto por números zero
-        maior_x = lista_posicao[0][0]
-        maior_y = lista_posicao[0][1]
-        for y_x in lista_posicao:
-            if y_x[0] > maior_y:
-                maior_y = y_x[0]
-            if y_x[1] > maior_x:
-                maior_x = y_x[1]
-        lista_x = [0] * maior_x
-        lista_y = [lista_x] * maior_y
-        print(lista_y)
-
-        #atualizando as posicoes por, no tabuleiro, por 1
+        #atualizando as posicoes no tabuleiro por 1
         for y_x in lista_posicao:
             posicao_em_y = y_x[0]
             posicao_em_x = y_x[1]
-            print(posicao_em_y)
-            print(posicao_em_x)
-            lista_y[posicao_em_y][posicao_em_x] = 1
+        tabuleiro[posicao_em_y][posicao_em_x] = 1
         
-    return lista_y
+    return tabuleiro
 
-# print(posiciona_frota([
-#   { "tipo": "porta-aviões", "posicoes": [[1, 5], [1, 6], [1, 7], [1, 8]]},
-#   { "tipo": "navio-tanque", "posicoes": [[4, 7], [5, 7], [6, 7]]},
-#   { "tipo": "navio-tanque", "posicoes": [[6, 1], [6, 2], [6, 3]]},
-#   { "tipo": "destroyer", "posicoes": [[1, 1], [2, 1]]},
-#   { "tipo": "destroyer", "posicoes": [[2, 3], [3, 3]]},
-#   { "tipo": "destroyer", "posicoes": [[9, 1], [9, 2]]},
-#   { "tipo": "submarino", "posicoes": [[0, 3]]},
-#   { "tipo": "submarino", "posicoes": [[4, 5]]},
-#   { "tipo": "submarino", "posicoes": [[8, 4]]},
-#   { "tipo": "submarino", "posicoes": [[8, 9]]}
-# ]))
+print(posiciona_frota([
+  { "tipo": "porta-aviões", "posicoes": [[1, 5], [1, 6], [1, 7], [1, 8]]},
+  { "tipo": "navio-tanque", "posicoes": [[4, 7], [5, 7], [6, 7]]},
+  { "tipo": "navio-tanque", "posicoes": [[6, 1], [6, 2], [6, 3]]},
+  { "tipo": "destroyer", "posicoes": [[1, 1], [2, 1]]},
+  { "tipo": "destroyer", "posicoes": [[2, 3], [3, 3]]},
+  { "tipo": "destroyer", "posicoes": [[9, 1], [9, 2]]},
+  { "tipo": "submarino", "posicoes": [[0, 3]]},
+  { "tipo": "submarino", "posicoes": [[4, 5]]},
+  { "tipo": "submarino", "posicoes": [[8, 4]]},
+  { "tipo": "submarino", "posicoes": [[8, 9]]}
+  ]))
 
 def afundados(lista_frota,situacao_atual):
     afundado = 0
@@ -78,3 +67,4 @@ print(afundados([
   [0,  0 ,  0 ,  0 , 'X',  0 ,  0 ,  0 ,  0 ,  1 ],
   [0,  1 ,  1 , '-', '-', '-', '-', '-', '-', '-']
 ]))
+
