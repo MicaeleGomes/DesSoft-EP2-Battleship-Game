@@ -1,7 +1,6 @@
 def posiciona_frota(lista_frota):
     #crio um tabuleiro 10 x 10
-    grid = [[0] * 10] * 10
-    tabuleiro = grid
+    grid = [[0] * 10 for _ in range(10)]
     # acessando cada avião
     for frota in lista_frota:
         #acessando, no avião, a sua posição
@@ -10,9 +9,9 @@ def posiciona_frota(lista_frota):
         for y_x in lista_posicao:
             posicao_em_y = y_x[0]
             posicao_em_x = y_x[1]
-        tabuleiro[posicao_em_y][posicao_em_x] = 1
+            grid[posicao_em_y][posicao_em_x] = 1
         
-    return tabuleiro
+    return grid
 
 print(posiciona_frota([
   { "tipo": "porta-aviões", "posicoes": [[1, 5], [1, 6], [1, 7], [1, 8]]},
