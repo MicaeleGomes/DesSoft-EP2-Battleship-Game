@@ -118,7 +118,7 @@ while jogando:
             rodada = False
         else:
             print(f'A posição linha {ataque_linha} e coluna {ataque_coluna} já foi informada anteriormente!')
-            jogando = True
+            rodada = True
     # TODO: Implemente aqui a lógica para verificar se o jogador derrubou todos os navios do oponente
     jogo_atualizado = funcoes.afundados(frota_oponente,tabuleiro_oponente)
     if jogo_atualizado == len(frota_oponente):
