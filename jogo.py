@@ -1,7 +1,6 @@
 import random
 import funcoes
 
-# PARA TESTAS O SEU CÓDIGO NA ACADEMIA PYTHON SERÁ NECESSÁRIO COLAR AS FUNÇÕES DESENVOLVIDAS AQUI!!!
 def monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente):
     '''
     tabuleiro_jogador: tabuleiro do jogador
@@ -70,7 +69,6 @@ def gerando_frota_automaticamente():
 
     return frota
 
-
 # Gerando frota de forma aleatório para jogadores
 frota_jogador = gerando_frota_automaticamente()
 frota_oponente = gerando_frota_automaticamente()
@@ -82,7 +80,9 @@ tabuleiro_oponente = funcoes.posiciona_frota(frota_oponente)
 jogando = True
 
 # criando uma lista de coordenadas já informadas pelo jogador
-lista_coordenadas_informadas = []
+lista_coordenadas_informadas_jogador = []
+lista_coordenadas_informadas_oponente = []
+
 
 while jogando:
 
@@ -90,38 +90,71 @@ while jogando:
     print(monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente))
 
     # definindo um loop para as jogadas que ocorrerão dentro do loop jogando
-    rodada = True
-    while rodada:
+    rodada_jogador = True
+    while rodada_jogador:
         #lista de coordenana informada na rodada, a ser atualizada com a linha e coluna informada na jogada
-        coordenada_informada = []
+        coordenada_informada_jogador = []
         # TODO: Implemente aqui a lógica para perguntar a linha que o jogador deseja atirar
-        ataque_linha = int(input('em qual linha você deseja atacar? '))
-        while ataque_linha > 9 or ataque_linha < 0:
+        ataque_linha_jogador = int(input('em qual linha você deseja atacar? '))
+        while ataque_linha_jogador > 9 or ataque_linha_jogador < 0:
             print('Linha inválida!')
-            ataque_linha = int(input('em qual linha você deseja atacar? '))
+            ataque_linha_jogador = int(input('em qual linha você deseja atacar? '))
         # se sair do loop de ataque linha, append na coordenada informada com o ataque validado
-        coordenada_informada.append(ataque_linha)
+        coordenada_informada_jogador.append(ataque_linha_jogador)
         # TODO: Implemente aqui a lógica para perguntar a coluna que o jogador deseja atirar
-        ataque_coluna = int(input('em qual coluna você deseja atacar? '))
-        while ataque_coluna > 9 or ataque_coluna < 0:
+        ataque_coluna_jogador = int(input('em qual coluna você deseja atacar? '))
+        while ataque_coluna_jogador > 9 or ataque_coluna_jogador < 0:
             print('Coluna inválida!')
-            ataque_coluna = int(input('em qual coluna você deseja atacar? '))
+            ataque_coluna_jogador = int(input('em qual coluna você deseja atacar? '))
         # se sair do loop de ataque coluna, append na coordenada informada com o ataque validado
-        coordenada_informada.append(ataque_coluna)
+        coordenada_informada_jogador.append(ataque_coluna_jogador)
         # TODO: Implemente aqui a lógica para verificar se a linha e coluna não foram escolhidas anteriormente
         #verificando se a coordenada já foi informada pelo jogador
-        if coordenada_informada not in lista_coordenadas_informadas:
-            lista_coordenadas_informadas.append(coordenada_informada)
-            jogada = funcoes.faz_jogada(tabuleiro_oponente,ataque_linha,ataque_coluna)
+        if coordenada_informada_jogador not in lista_coordenadas_informadas_jogador:
+            lista_coordenadas_informadas_jogador.append(coordenada_informada_jogador)
+            jogada = funcoes.faz_jogada(tabuleiro_oponente,ataque_linha_jogador,ataque_coluna_jogador)
             # finaliza a rodada
-            rodada = False
+            rodada_jogador = False
         else:
-            print(f'A posição linha {ataque_linha} e coluna {ataque_coluna} já foi informada anteriormente!')
-            rodada = True
+            print(f'A posição linha {ataque_linha_jogador} e coluna {ataque_coluna_jogador} já foi informada anteriormente!')
+            rodada_jogador = True
     # TODO: Implemente aqui a lógica para verificar se o jogador derrubou todos os navios do oponente
-    jogo_atualizado = funcoes.afundados(frota_oponente,tabuleiro_oponente)
-    if jogo_atualizado == len(frota_oponente):
+    jogo_atualizado_jogador = funcoes.afundados(frota_oponente,tabuleiro_oponente)
+    if jogo_atualizado_jogador == len(frota_oponente):
         print('Parabéns! Você derrubou todos os navios do seu oponente!')
         jogando = False
+        break
     else:
-        jogando = True
+        rodada_oponente = True
+
+    # definindo um loop para as jogadas que ocorrerão dentro do loop jogando
+    rodada_oponente = True
+    while rodada_oponente:
+        #lista de coordenana informada na rodada, a ser atualizada com a linha e coluna informada na jogada
+        coordenada_informada_oponente = []
+        # TODO: Implemente aqui a lógica para perguntar a linha que o jogador deseja atirar
+        ataque_linha_oponente = random.randint(0,9)
+        # append na coordenada informada com o ataque validado
+        coordenada_informada_oponente.append(ataque_linha_oponente)
+        # TODO: Implemente aqui a lógica para perguntar a coluna que o jogador deseja atirar
+        ataque_coluna_oponente = random.randint(0,9)
+        # append na coordenada informada com o ataque validado
+        coordenada_informada_oponente.append(ataque_coluna_oponente)
+        # TODO: Implemente aqui a lógica para verificar se a linha e coluna não foram escolhidas anteriormente
+        #verificando se a coordenada já foi escolhida pelo oponente
+        if coordenada_informada_oponente not in lista_coordenadas_informadas_oponente:
+            lista_coordenadas_informadas_oponente.append(coordenada_informada_oponente)
+            jogada = funcoes.faz_jogada(tabuleiro_jogador,ataque_linha_oponente,ataque_coluna_oponente)
+            print(f'Seu oponente está atacando na linha {ataque_linha_oponente} e coluna {ataque_coluna_oponente}')
+            # finaliza a rodada
+            rodada_oponente = False
+        else:
+            rodada_oponente = True
+    # TODO: Implemente aqui a lógica para verificar se o jogador derrubou todos os navios do oponente
+    jogo_atualizado_oponente = funcoes.afundados(frota_jogador,tabuleiro_jogador)
+    if jogo_atualizado_oponente == len(frota_jogador):
+        print('Xi! O oponente derrubou toda a sua frota =(')
+        jogando = False
+        break
+    else:
+        rodada_jogador = True
