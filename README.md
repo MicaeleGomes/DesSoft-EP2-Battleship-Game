@@ -1,17 +1,21 @@
-# DesSoft-EP2-Battleship-Game
+# DesSoft-EP2-Jogo-de-Batalha-Naval
 
-This repository contains the implementation of a Battleship game developed as part of the Design of Software (DeSoft) discipline at Insper, a first-semester course in the Engineering program. The project was developed collaboratively by Micaele Gomes and Nathan Braga.
+Este repositório contém a implementação de um jogo de Batalha Naval desenvolvido como parte da disciplina de Design de Software (DesSoft) no Insper, um curso do primeiro semestre do programa de Engenharia. O projeto foi desenvolvido colaborativamente por Micaele Gomes e Nathan Braga.
 
-### Overview
-The game is a Python-based implementation of the classic Battleship game where players aim to sink each other's fleet of ships. The game includes features for both player and AI-controlled opponent gameplay.
+### Visão Geral
 
-### Usage
-To play the game, run the `jogo.py` script. Follow the on-screen instructions to input your moves. The game will display the boards after each turn and announce the winner once all ships of a player are sunk.
+O jogo é uma implementação em Python do clássico jogo Batalha Naval, onde os jogadores têm como objetivo afundar a frota de navios do oponente. O jogo inclui funcionalidades para gameplay tanto de jogadores quanto de oponentes controlados por IA.
 
-### Contact
-For any questions or suggestions, please contact:
+### Uso
+
+Para jogar o jogo, execute o script `jogo.py`. Siga as instruções na tela para inserir suas jogadas. O jogo exibirá os tabuleiros após cada turno e anunciará o vencedor assim que todos os navios de um jogador forem afundados.
+
+### Contato
+
+Para quaisquer perguntas ou sugestões, entre em contato com:
 
 - Micaele Gomes
 - Nathan Braga
 
-We hope you enjoy playing our Battleship game!
+Esperamos que você aproveite jogar o nosso jogo de Batalha Naval!
+
